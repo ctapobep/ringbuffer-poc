@@ -1,13 +1,14 @@
 package poc.ringbuffer;
 
-import com.lmax.disruptor.BatchEventProcessor;
 import com.lmax.disruptor.EventHandler;
+import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.SequenceBarrier;
 import com.lmax.disruptor.SingleThreadedClaimStrategy;
 import com.lmax.disruptor.SleepingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -19,32 +20,38 @@ public class Launcher {
     private static final int RING_SIZE = 10;
 
     public static void main(String[] args) {
-        final EventHandler<ValueEvent> handler = new EventHandler<ValueEvent>() {
-            public void onEvent(final ValueEvent event, final long sequence, final boolean endOfBatch) throws Exception {
-                // process a new event.
+        EventHandler<CalculateNumbersEvent> handler = new EventHandler<CalculateNumbersEvent>() {
+            public void onEvent(CalculateNumbersEvent event, long sequence, boolean endOfBatch) throws Exception {
+                event.setValue(new Random().nextInt(50));
             }
         };
-        Disruptor<ValueEvent> disruptor =
-                new Disruptor<ValueEvent>(ValueEvent.EVENT_FACTORY, createExecutor(),
-                        new SingleThreadedClaimStrategy(RING_SIZE),
-                        new SleepingWaitStrategy());
+        Disruptor<CalculateNumbersEvent> disruptor = new Disruptor<CalculateNumbersEvent>(CalculateNumbersEvent.EVENT_FACTORY, createExecutor(),
+                new SingleThreadedClaimStrategy(RING_SIZE),
+                new SleepingWaitStrategy());
         disruptor.handleEventsWith(handler);
-        RingBuffer<ValueEvent> ringBuffer = disruptor.start();
+        RingBuffer<CalculateNumbersEvent> ringBuffer = disruptor.start();
 
 
         // Publishers claim events in sequence
         long sequence = ringBuffer.next();
-        ValueEvent event = ringBuffer.get(sequence);
+        CalculateNumbersEvent event = ringBuffer.get(sequence);
 
-        event.setValue(1234); // this could be more complex with multiple fields
+        event.setValue(1234);
 
-// make the event available to EventProcessors
+        // make the event available to EventProcessors
         ringBuffer.publish(sequence);
 
-        disruptor.publishEvent(eventTranslator);
+        disruptor.publishEvent(new EventTranslator<CalculateNumbersEvent>() {
+            @Override
+            public void translateTo(CalculateNumbersEvent event, long sequence) {
+                long originalValue = event.getValue();
+                event.setValue(originalValue * 2);
+                event.setFired(new Date());
+            }
+        });
     }
 
-    private static Executor createExecutor(){
+    private static Executor createExecutor() {
         return Executors.newSingleThreadExecutor();
     }
 }
