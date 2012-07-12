@@ -18,6 +18,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/poc/ringbuffer/Launcher.java" line="20" class="poc.ringbuffer.Launcher" package="poc.ringbuffer">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -58,15 +73,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Launcher.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Launcher.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/poc/ringbuffer/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="60" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
+            <state line="41" column="35" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.5459662">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#575#598#0" expanded="true" />
-                <element signature="e#1385#1603#0" expanded="true" />
-                <element signature="e#1592#1593#0" expanded="true" />
+                <element signature="e#1376#1594#0" expanded="true" />
+                <element signature="e#1583#1584#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,15 +100,17 @@
         <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/disruptor/disruptor/2.10.1/disruptor-2.10.1-sources.jar!/com/lmax/disruptor/EventProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="22" column="17" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <element signature="e#0#1302#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventProcessorRepository.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EventProcessorRepository.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/disruptor/disruptor/2.10.1/disruptor-2.10.1-sources.jar!/com/lmax/disruptor/dsl/EventProcessorRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.33277592">
+            <state line="62" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -306,7 +323,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="ringbuffer-poc" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -456,12 +479,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1088" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39914164" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -472,7 +495,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32939914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Pomodoro" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -673,22 +696,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/poc/ringbuffer/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="60" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#575#598#0" expanded="true" />
-            <element signature="e#1385#1603#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/disruptor/disruptor/2.10.1/disruptor-2.10.1-sources.jar!/com/lmax/disruptor/EventProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="17" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#0#1302#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -701,8 +714,20 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/disruptor/disruptor/2.10.1/disruptor-2.10.1-sources.jar!/com/lmax/disruptor/dsl/EventProcessorRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.33277592">
+        <state line="62" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/poc/ringbuffer/Launcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="35" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.5459662">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#575#598#0" expanded="true" />
+            <element signature="e#1376#1594#0" expanded="true" />
+            <element signature="e#1583#1584#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

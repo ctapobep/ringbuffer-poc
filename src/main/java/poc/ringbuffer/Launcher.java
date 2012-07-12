@@ -21,8 +21,8 @@ public class Launcher {
         Disruptor<CalculateNumbersEvent> disruptor = new Disruptor<CalculateNumbersEvent>(CalculateNumbersEvent.EVENT_FACTORY, createExecutor(),
                 new SingleThreadedClaimStrategy(RING_SIZE),
                 new SleepingWaitStrategy());
-        disruptor.handleEventsWith(new FactorialCalculator()).and(new FibonacciCalculator())
-                .then(new HexRepresentationCalculator()).and(new BinaryRepresentationCalculator())
+        disruptor.handleEventsWith(new FactorialCalculator(), new FibonacciCalculator())
+                .then(new HexRepresentationCalculator(), new BinaryRepresentationCalculator())
                 .then(new EventOutputHandler());
         RingBuffer<CalculateNumbersEvent> ringBuffer = disruptor.start();
 
@@ -31,7 +31,7 @@ public class Launcher {
         long sequence = ringBuffer.next();
         CalculateNumbersEvent event = ringBuffer.get(sequence);
 
-        event.setValue(20);
+        event.setValue(5);
 
         // make the event available to EventProcessors
         ringBuffer.publish(sequence);
