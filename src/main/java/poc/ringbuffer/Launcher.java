@@ -1,6 +1,5 @@
 package poc.ringbuffer;
 
-import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.SingleThreadedClaimStrategy;
@@ -8,7 +7,6 @@ import com.lmax.disruptor.SleepingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -17,18 +15,15 @@ import java.util.concurrent.Executors;
  */
 public class Launcher {
 
-    private static final int RING_SIZE = 10;
+    private static final int RING_SIZE = 16;
 
     public static void main(String[] args) {
-        EventHandler<CalculateNumbersEvent> handler = new EventHandler<CalculateNumbersEvent>() {
-            public void onEvent(CalculateNumbersEvent event, long sequence, boolean endOfBatch) throws Exception {
-                event.setValue(new Random().nextInt(50));
-            }
-        };
         Disruptor<CalculateNumbersEvent> disruptor = new Disruptor<CalculateNumbersEvent>(CalculateNumbersEvent.EVENT_FACTORY, createExecutor(),
                 new SingleThreadedClaimStrategy(RING_SIZE),
                 new SleepingWaitStrategy());
-        disruptor.handleEventsWith(handler);
+        disruptor.handleEventsWith(new FactorialCalculator()).and(new FibonacciCalculator())
+                .then(new HexRepresentationCalculator()).and(new BinaryRepresentationCalculator())
+                .then(new EventOutputHandler());
         RingBuffer<CalculateNumbersEvent> ringBuffer = disruptor.start();
 
 
@@ -36,7 +31,7 @@ public class Launcher {
         long sequence = ringBuffer.next();
         CalculateNumbersEvent event = ringBuffer.get(sequence);
 
-        event.setValue(1234);
+        event.setValue(20);
 
         // make the event available to EventProcessors
         ringBuffer.publish(sequence);
@@ -44,8 +39,6 @@ public class Launcher {
         disruptor.publishEvent(new EventTranslator<CalculateNumbersEvent>() {
             @Override
             public void translateTo(CalculateNumbersEvent event, long sequence) {
-                long originalValue = event.getValue();
-                event.setValue(originalValue * 2);
                 event.setFired(new Date());
             }
         });
